@@ -5,9 +5,12 @@
   <title>TelaLivre 3D Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
+    * { box-sizing:border-box; margin:0; padding:0; }
     body { font-family:'Segoe UI',sans-serif; background:#080808; color:#eee; overflow-x:hidden; }
-    .hero { position: relative; height:80vh; background:url('sua-imagem-3d.jpg') center/cover no-repeat; }
+    .hero {
+      position: relative; height:80vh;
+      background: url('assets/banner.jpg') center/cover no-repeat;
+    }
     .hero::before {
       content:""; position:absolute; inset:0;
       background: linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
@@ -19,62 +22,90 @@
     }
     .hero-content h1 { font-size:3rem; margin-bottom:15px; }
     .hero-content p { font-size:1.2rem; margin-bottom:25px; }
-    .btn { display:inline-block; margin:0 10px; padding:12px 30px; border-radius:50px;
-          background:#00d084; color:#080808; font-weight:bold; text-decoration:none;
-          transition:transform 0.2s; }
+    .btn {
+      display:inline-block; margin:0 10px; padding:12px 30px; border-radius:50px;
+      background:#00d084; color:#080808; font-weight:bold; text-decoration:none;
+      transition:transform .2s;
+    }
     .btn:hover { transform:scale(1.05); }
-    @keyframes fadeDown { from {opacity:0;transform:translate(-50%, -60%);} to {opacity:1;} }
 
-    .benefits { background:#101010; padding:60px 20px; text-align:center; }
+    @keyframes fadeDown {
+      from {opacity:0;transform:translate(-50%, -60%);}
+      to {opacity:1;}
+    }
+
+    .benefits {
+      background:#101010; padding:60px 20px; text-align:center;
+    }
     .benefits p { font-size:1.1rem; margin:10px 0; }
 
     .carousel {
       position:relative; padding:40px 0; display:flex;
       overflow-x:auto; gap:20px;
-      scroll-behavior: smooth;
+      scroll-behavior:smooth;
     }
     .card-3d {
       flex:0 0 200px; perspective:1000px;
     }
     .card-3d img {
       width:100%; border-radius:12px;
-      transform: rotateY(-10deg) rotateX(5deg);
-      transition:transform 0.3s;
+      transform:rotateY(-10deg) rotateX(5deg);
+      transition:transform .3s;
     }
     .card-3d img:hover {
       transform:rotateY(0deg) rotateX(0deg) scale(1.05);
     }
 
-    #planos { padding:60px 20px; text-align:center; background:#181818; }
-    .plans { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+    #planos {
+      padding:60px 20px; text-align:center; background:#181818;
+    }
+    .plans {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
+    }
     .plan-card {
       background:#202020; width:260px; border-radius:12px;
       box-shadow:0 10px 20px rgba(0,0,0,0.7);
-      overflow:hidden; transition:transform 0.3s;
+      overflow:hidden; transition:transform .3s;
     }
     .plan-card:hover { transform:translateY(-10px); }
-    .plan-card header { background:#00d084; padding:20px; }
-    .plan-card header h3 { margin:0; color:#080808; }
-    .plan-card .info { padding:15px; color:#ccc; }
-    .plan-card .info p { margin:10px 0; font-size:1.1rem; }
-    .plan-card .action { padding:20px; }
+    .plan-card header {
+      background:#00d084; padding:20px;
+    }
+    .plan-card header h3 {
+      margin:0; color:#080808;
+    }
+    .plan-card .info {
+      padding:15px; color:#ccc;
+    }
+    .plan-card .info p {
+      margin:10px 0; font-size:1.1rem;
+    }
+    .plan-card .action {
+      padding:20px;
+    }
     .plan-card .action a {
       text-decoration:none; padding:12px 25px;
       background:#00d084; color:#080808; border-radius:50px;
       font-weight:bold;
     }
-    .plan-card .action a:hover { opacity:0.9; }
+    .plan-card .action a:hover {
+      opacity:0.9;
+    }
 
-    .footer { text-align:center; padding:30px; background:#080808; color:#555; }
+    .footer {
+      text-align:center; padding:30px;
+      background:#080808; color:#555;
+    }
 
     .whatsapp-button {
       position:fixed; bottom:25px; right:25px; z-index:1000;
     }
     .whatsapp-button img {
-      width:60px; height:60px;
-      transition:transform 0.2s;
+      width:60px; height:60px; transition:transform .2s;
     }
-    .whatsapp-button img:hover { transform:scale(1.1); }
+    .whatsapp-button img:hover {
+      transform:scale(1.1);
+    }
 
     @media (max-width:768px) {
       .carousel { justify-content:center; }
@@ -101,10 +132,9 @@
   </section>
 
   <div class="carousel">
-    <div class="card-3d"><img src="capa1.jpg" alt="Conteúdo 1"></div>
-    <div class="card-3d"><img src="capa2.jpg" alt="Conteúdo 2"></div>
-    <div class="card-3d"><img src="capa3.jpg" alt="Conteúdo 3"></div>
-    <div class="card-3d"><img src="capa4.jpg" alt="Conteúdo 4"></div>
+    <div class="card-3d"><img src="assets/capa1.jpg" alt="Conteúdo 1"></div>
+    <div class="card-3d"><img src="assets/capa2.jpg" alt="Conteúdo 2"></div>
+    <div class="card-3d"><img src="assets/capa3.jpg" alt="Conteúdo 3"></div>
   </div>
 
   <section id="planos">
@@ -135,7 +165,6 @@
   </a>
 
   <script>
-    // opcional: auto-scroll suave do carrossel
     const carousel = document.querySelector('.carousel');
     carousel.addEventListener('wheel', e => {
       e.preventDefault();
