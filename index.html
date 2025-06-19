@@ -1,175 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>TelaLivre 3D Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CinePlay IPTV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { font-family:'Segoe UI',sans-serif; background:#080808; color:#eee; overflow-x:hidden; }
-    .hero {
-      position: relative; height:80vh;
-      background: url('assets/banner.jpg') center/cover no-repeat;
-    }
-    .hero::before {
-      content:""; position:absolute; inset:0;
-      background: linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
-    }
-    .hero-content {
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      text-align:center; z-index:1; animation:fadeDown 1s ease-out;
-    }
-    .hero-content h1 { font-size:3rem; margin-bottom:15px; }
-    .hero-content p { font-size:1.2rem; margin-bottom:25px; }
-    .btn {
-      display:inline-block; margin:0 10px; padding:12px 30px; border-radius:50px;
-      background:#00d084; color:#080808; font-weight:bold; text-decoration:none;
-      transition:transform .2s;
-    }
-    .btn:hover { transform:scale(1.05); }
-
-    @keyframes fadeDown {
-      from {opacity:0;transform:translate(-50%, -60%);}
-      to {opacity:1;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    .benefits {
-      background:#101010; padding:60px 20px; text-align:center;
-    }
-    .benefits p { font-size:1.1rem; margin:10px 0; }
-
-    .carousel {
-      position:relative; padding:40px 0; display:flex;
-      overflow-x:auto; gap:20px;
-      scroll-behavior:smooth;
-    }
-    .card-3d {
-      flex:0 0 200px; perspective:1000px;
-    }
-    .card-3d img {
-      width:100%; border-radius:12px;
-      transform:rotateY(-10deg) rotateX(5deg);
-      transition:transform .3s;
-    }
-    .card-3d img:hover {
-      transform:rotateY(0deg) rotateX(0deg) scale(1.05);
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d0d1d, #1c1c2e);
+      color: white;
     }
 
-    #planos {
-      padding:60px 20px; text-align:center; background:#181818;
-    }
-    .plans {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
-    }
-    .plan-card {
-      background:#202020; width:260px; border-radius:12px;
-      box-shadow:0 10px 20px rgba(0,0,0,0.7);
-      overflow:hidden; transition:transform .3s;
-    }
-    .plan-card:hover { transform:translateY(-10px); }
-    .plan-card header {
-      background:#00d084; padding:20px;
-    }
-    .plan-card header h3 {
-      margin:0; color:#080808;
-    }
-    .plan-card .info {
-      padding:15px; color:#ccc;
-    }
-    .plan-card .info p {
-      margin:10px 0; font-size:1.1rem;
-    }
-    .plan-card .action {
-      padding:20px;
-    }
-    .plan-card .action a {
-      text-decoration:none; padding:12px 25px;
-      background:#00d084; color:#080808; border-radius:50px;
-      font-weight:bold;
-    }
-    .plan-card .action a:hover {
-      opacity:0.9;
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
     }
 
-    .footer {
-      text-align:center; padding:30px;
-      background:#080808; color:#555;
+    header h1 {
+      font-size: 3rem;
+      color: #00ffe5;
     }
 
-    .whatsapp-button {
-      position:fixed; bottom:25px; right:25px; z-index:1000;
-    }
-    .whatsapp-button img {
-      width:60px; height:60px; transition:transform .2s;
-    }
-    .whatsapp-button img:hover {
-      transform:scale(1.1);
+    header p {
+      font-size: 1.2rem;
+      color: #cccccc;
+      margin-top: 10px;
     }
 
-    @media (max-width:768px) {
-      .carousel { justify-content:center; }
-      .hero-content h1 { font-size:2.2rem; }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .benefits,
+    .plans,
+    .devices,
+    .payments {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .benefits ul,
+    .devices ul,
+    .payments ul {
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
+    }
+
+    .benefits li,
+    .devices li,
+    .payments li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .plans .plan {
+      background: #222;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #00ffe5;
+      transition: transform 0.3s ease;
+    }
+
+    .plans .plan:hover {
+      transform: scale(1.05);
+    }
+
+    .plan h3 {
+      font-size: 1.4rem;
+      color: #00ffe5;
+    }
+
+    .plan p {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 10px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+    }
+
+    footer {
+      margin-top: 40px;
+    }
+
+    footer img {
+      width: 100%;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="hero-content">
-      <h1>TelaLivre 3D Experience</h1>
-      <p>Mais de 10.000 canais, filmes e séries em HD, FULL HD e 4K.</p>
-      <a href="#planos" class="btn">Conheça os Planos</a>
-      <a href="https://wa.me/5517935006483" class="btn">Fale via WhatsApp</a>
-    </div>
-  </div>
+  <header>
+    <h1>CinePlay IPTV</h1>
+    <p>Mais qualidade, mais canais, mais diversão!</p>
+  </header>
 
-  <section class="benefits">
-    <p>✅ Mais de <strong>10.000 canais</strong> nacionais e internacionais</p>
-    <p>✅ Filmes, séries, esportes e <strong>canais adultos</strong></p>
-    <p>✅ <strong>Atualizações automáticas</strong> sem custo</p>
-    <p>✅ Qualidade <strong>HD / FULL HD / 4K</strong></p>
+  <section class="section benefits">
+    <h2>📦 Benefícios</h2>
+    <ul>
+      <li>✅ Mais de 10.000 canais nacionais e internacionais</li>
+      <li>✅ Filmes, séries, esportes e canais adultos</li>
+      <li>✅ Atualizações automáticas e suporte 24h</li>
+      <li>✅ Qualidade HD / FULL HD / 4K em todos os planos</li>
+    </ul>
   </section>
 
-  <div class="carousel">
-    <div class="card-3d"><img src="assets/capa1.jpg" alt="Conteúdo 1"></div>
-    <div class="card-3d"><img src="assets/capa2.jpg" alt="Conteúdo 2"></div>
-    <div class="card-3d"><img src="assets/capa3.jpg" alt="Conteúdo 3"></div>
-  </div>
-
-  <section id="planos">
-    <h2 style="color:#00d084; font-size:2.2rem; margin-bottom:20px;">Escolha Seu Plano</h2>
-    <div class="plans">
-      <div class="plan-card">
-        <header><h3>1 Mês</h3></header>
-        <div class="info"><p>R$35,00</p><p>Acesso completo por 30 dias</p></div>
-        <div class="action"><a href="#checkout">Assinar</a></div>
-      </div>
-      <div class="plan-card">
-        <header><h3>3 Meses</h3></header>
-        <div class="info"><p>R$90,00</p><p>Pacote com desconto especial</p></div>
-        <div class="action"><a href="#checkout">Assinar</a></div>
-      </div>
-      <div class="plan-card">
-        <header><h3>6 Meses</h3></header>
-        <div class="info"><p>R$160,00</p><p>Economia e benefícios a longo prazo</p></div>
-        <div class="action"><a href="#checkout">Assinar</a></div>
-      </div>
-    </div>
+  <section class="section plans">
+    <h2>💰 Nossos Planos</h2>
+    <div class="plan"><h3>📅 1 Mês</h3><p>R$ 35,00</p></div>
+    <div class="plan"><h3>📅 3 Meses</h3><p>R$ 90,00</p></div>
+    <div class="plan"><h3>📅 6 Meses</h3><p>R$ 160,00</p></div>
+    <div class="plan"><h3>📅 1 Ano</h3><p>R$ 310,00</p></div>
   </section>
 
-  <div class="footer">&copy; 2025 TelaLivre. Todos os direitos reservados.</div>
+  <section class="section devices">
+    <h2>📺 Dispositivos Compatíveis</h2>
+    <ul>
+      <li>✅ Smart TVs</li>
+      <li>✅ TV Box / Fire Stick</li>
+      <li>✅ Celulares Android / iOS</li>
+      <li>✅ Computadores e Laptops</li>
+      <li>✅ Projetores</li>
+    </ul>
+  </section>
 
-  <a href="https://wa.me/5517935006483" class="whatsapp-button" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  <section class="section payments">
+    <h2>💳 Formas de Pagamento</h2>
+    <ul>
+      <li>✅ PIX</li>
+      <li>✅ Cartão de Crédito</li>
+      <li>✅ Cartão de Débito</li>
+    </ul>
+  </section>
+
+  <!-- Botão Flutuante do WhatsApp -->
+  <a href="https://wa.me/5517991996803" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    💬
   </a>
 
-  <script>
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('wheel', e => {
-      e.preventDefault();
-      carousel.scrollLeft += e.deltaY;
-    });
-  </script>
+  <!-- Rodapé com imagem personalizada -->
+  <footer>
+    <img src="URL-DA-SUA-IMAGEM-AQUI" alt="Imagem de Rodapé">
+  </footer>
+
 </body>
 </html>
