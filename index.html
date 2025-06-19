@@ -1,208 +1,123 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streaming CinePlay</title>
+  <title>CinePlay IPTV</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://images.unsplash.com/photo-1598300054143-bc3e9f44383f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0d0d1d, #1c1c2e);
+      color: #fff;
+      overflow-x: hidden;
     }
     header {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 30px;
+      background: #111;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     header h1 {
-      margin: 0;
-      font-size: 3em;
-      background: linear-gradient(to right, #ff3c00, #ffae00);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .banner {
-      padding: 60px 20px;
-      text-align: center;
-      background: rgba(0,0,0,0.6);
-    }
-    .banner h2 {
       font-size: 2.5em;
-      margin-bottom: 15px;
+      background: linear-gradient(90deg, #00ffd1, #007cf0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .banner p {
-      font-size: 1.4em;
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: url('https://cdn.pixabay.com/photo/2023/10/22/iptv-bg-3d.jpg') no-repeat center/cover;
+      backdrop-filter: brightness(0.3);
+    }
+    .hero h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
     }
     .planos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 50px 10px;
-      background: rgba(0,0,0,0.7);
-    }
-    .plano {
-      background: #111;
-      padding: 30px;
-      border-radius: 15px;
-      width: 260px;
+      padding: 40px 20px;
+      background: #1b1b2f;
       text-align: center;
-      border: 3px solid #ff3c00;
-      box-shadow: 0 0 15px #ff3c00aa;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .plano:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px #ffae00dd;
-    }
-    .plano h3 {
-      margin-top: 0;
+    .planos h3 {
       font-size: 2em;
+      margin-bottom: 30px;
     }
-    .plano p {
-      font-size: 1.7em;
-      font-weight: bold;
-      color: #ffae00;
+    .tabela {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .plano button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #ff3c00;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background 0.3s;
+    .tabela div {
+      background: #2d2d44;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    .plano button:hover {
-      background-color: #ff6600;
-    }
-    .pagamento, .compatibilidade, .suporte {
+    .pagamento, .qualidade {
       padding: 40px 20px;
       text-align: center;
-      background: rgba(0,0,0,0.6);
-      margin-top: 10px;
     }
-    .pagamento h2, .compatibilidade h2, .suporte h2 {
-      color: #ff3c00;
-      font-size: 2em;
+    .qualidade p, .pagamento p {
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 0 auto;
     }
-    .compatibilidade-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 15px;
-    }
-    .compatibilidade-icons div {
-      text-align: center;
-      max-width: 100px;
-    }
-    .compatibilidade-icons img {
-      width: 60px;
-      height: 60px;
-    }
-    .footer-banner {
-      margin-top: 40px;
-      text-align: center;
-    }
-    .footer-banner img {
-      width: 100%;
-      max-width: 900px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
-    }
-    .whatsapp-btn {
+    .whatsapp-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #25d366;
+      background: #25D366;
       color: white;
-      border: none;
       padding: 15px 20px;
       border-radius: 50px;
-      font-size: 16px;
       font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px #25d366;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
       text-decoration: none;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      transition: transform 0.3s;
     }
-    .whatsapp-btn img {
-      width: 20px;
-      height: 20px;
+    .whatsapp-button:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Streaming Premium CinePlay</h1>
-  </header>  <div class="banner">
-    <h2>Chega de pagar caro para assistir!</h2>
-    <p>Qualidade garantida, suporte 24h e total estabilidade. Escolha seu plano ideal.</p>
-  </div>  <section class="planos">
-    <div class="plano">
-      <h3>1 Mês</h3>
-      <p>R$ 35,00</p>
-      <button>Escolher Plano</button>
+    <h1>CinePlay IPTV</h1>
+  </header>
+
+  <section class="hero">
+    <h2>TV Online em Alta Performance</h2>
+    <p>Assista aos melhores canais, filmes e séries com qualidade e estabilidade garantidas. Tenha acesso completo e suporte 24h.</p>
+  </section>
+
+  <section class="planos">
+    <h3>Planos disponíveis</h3>
+    <div class="tabela">
+      <div><strong>1 Mês</strong><br>R$ 35,00</div>
+      <div><strong>3 Meses</strong><br>R$ 90,00</div>
+      <div><strong>6 Meses</strong><br>R$ 160,00</div>
+      <div><strong>1 Ano</strong><br>R$ 310,00</div>
     </div>
-    <div class="plano">
-      <h3>3 Meses</h3>
-      <p>R$ 90,00</p>
-      <button>Escolher Plano</button>
-    </div>
-    <div class="plano">
-      <h3>6 Meses</h3>
-      <p>R$ 160,00</p>
-      <button>Escolher Plano</button>
-    </div>
-    <div class="plano">
-      <h3>1 Ano</h3>
-      <p>R$ 300,00</p>
-      <button>Escolher Plano</button>
-    </div>
-  </section>  <section class="pagamento">
-    <h2>Formas de Pagamento</h2>
-    <p>PIX, Cartão de Crédito e Débito</p>
-  </section>  <section class="compatibilidade">
-    <h2>Compatível com:</h2>
-    <div class="compatibilidade-icons">
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504841.png" alt="Smart TV">
-        <p>Smart TV</p>
-      </div>
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="TV Box">
-        <p>TV Box</p>
-      </div>
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Celular">
-        <p>Celular</p>
-      </div>
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="Computador">
-        <p>Computador</p>
-      </div>
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/3602/3602123.png" alt="Projetor">
-        <p>Projetor</p>
-      </div>
-    </div>
-  </section>  <section class="suporte">
-    <h2>Suporte 24 Horas</h2>
-    <p>Conte com atendimento rápido e especializado, sempre que precisar.</p>
-  </section>  <div class="footer-banner">
-    <img src="/mnt/data/file-LYpgrotd4viZiLiP3Wj9rE" alt="Banner CinePlay" />
-  </div>  <a href="https://wa.me/5517991996803" class="whatsapp-btn" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> Fale conosco no WhatsApp
-  </a>
+  </section>
+
+  <section class="pagamento">
+    <h3>Formas de Pagamento</h3>
+    <p>PIX, Cartão de Crédito e Débito. Segurança e praticidade no pagamento para sua comodidade.</p>
+  </section>
+
+  <section class="qualidade">
+    <h3>Qualidade Garantida</h3>
+    <p>Nossos clientes aprovam! Tenha total estabilidade, suporte eficiente e a melhor experiência IPTV do Brasil. Sua satisfação é garantida!</p>
+  </section>
+
+  <a href="https://wa.me/5517991996803" class="whatsapp-button">Fale no WhatsApp</a>
 </body>
 </html>
