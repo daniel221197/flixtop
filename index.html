@@ -2,152 +2,83 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>TelaLivre Premium</title>
+  <title>TelaLivre 3D Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin:0; font-family: 'Segoe UI', sans-serif; color: #eee; background: #121212; }
-    .hero {
-      position: relative;
-      background: url('sua-imagem-impactante.jpg') center/cover no-repeat;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Segoe UI',sans-serif; background:#080808; color:#eee; overflow-x:hidden; }
+    .hero { position: relative; height:80vh; background:url('sua-imagem-3d.jpg') center/cover no-repeat; }
     .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
     }
     .hero-content {
-      position: relative;
-      text-align: center;
-      z-index: 1;
-      animation: fadeInDown 1.2s ease-out both;
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      text-align:center; z-index:1; animation:fadeDown 1s ease-out;
     }
-    .hero-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+    .hero-content h1 { font-size:3rem; margin-bottom:15px; }
+    .hero-content p { font-size:1.2rem; margin-bottom:25px; }
+    .btn { display:inline-block; margin:0 10px; padding:12px 30px; border-radius:50px;
+          background:#00d084; color:#080808; font-weight:bold; text-decoration:none;
+          transition:transform 0.2s; }
+    .btn:hover { transform:scale(1.05); }
+    @keyframes fadeDown { from {opacity:0;transform:translate(-50%, -60%);} to {opacity:1;} }
+
+    .benefits { background:#101010; padding:60px 20px; text-align:center; }
+    .benefits p { font-size:1.1rem; margin:10px 0; }
+
+    .carousel {
+      position:relative; padding:40px 0; display:flex;
+      overflow-x:auto; gap:20px;
+      scroll-behavior: smooth;
     }
-    .hero-content p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
+    .card-3d {
+      flex:0 0 200px; perspective:1000px;
     }
-    .btn-cta {
-      background: #E50914;
-      color: #fff;
-      padding: 15px 35px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: background 0.3s;
+    .card-3d img {
+      width:100%; border-radius:12px;
+      transform: rotateY(-10deg) rotateX(5deg);
+      transition:transform 0.3s;
     }
-    .btn-cta:hover {
-      background: #bf0812;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .card-3d img:hover {
+      transform:rotateY(0deg) rotateX(0deg) scale(1.05);
     }
 
-    section { padding: 80px 20px; }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin: 40px 0;
-    }
-    .feature {
-      max-width: 260px;
-      text-align: center;
-    }
-    .feature img {
-      width: 80px;
-      margin-bottom: 15px;
-    }
-    .feature h3 { margin-bottom: 10px; font-size: 1.2rem; color: #fff; }
-    .feature p { font-size: 0.95rem; color: #ccc; }
-
-    .plans {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
+    #planos { padding:60px 20px; text-align:center; background:#181818; }
+    .plans { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
     .plan-card {
-      background: #1E1E1E;
-      width: 280px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      overflow: hidden;
-      transition: transform 0.3s;
+      background:#202020; width:260px; border-radius:12px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.7);
+      overflow:hidden; transition:transform 0.3s;
     }
-    .plan-card:hover {
-      transform: translateY(-5px);
-    }
-    .plan-card header {
-      background: #272727;
-      padding: 20px;
-      text-align: center;
-    }
-    .plan-card header h2 {
-      margin:0;
-      font-size: 1.5rem;
-      color: #E50914;
-    }
-    .plan-card .content {
-      padding: 20px;
-      color: #ccc;
-    }
-    .plan-card .content p {
-      margin: 15px 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-    .plan-card .action {
-      padding: 20px;
-      text-align: center;
-    }
+    .plan-card:hover { transform:translateY(-10px); }
+    .plan-card header { background:#00d084; padding:20px; }
+    .plan-card header h3 { margin:0; color:#080808; }
+    .plan-card .info { padding:15px; color:#ccc; }
+    .plan-card .info p { margin:10px 0; font-size:1.1rem; }
+    .plan-card .action { padding:20px; }
     .plan-card .action a {
-      text-decoration: none;
-      background: #E50914;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 50px;
-      transition: background 0.3s;
+      text-decoration:none; padding:12px 25px;
+      background:#00d084; color:#080808; border-radius:50px;
+      font-weight:bold;
     }
-    .plan-card .action a:hover {
-      background: #bf0812;
-    }
+    .plan-card .action a:hover { opacity:0.9; }
 
-    .footer {
-      background: #181818;
-      color: #777;
-      text-align: center;
-      padding: 30px 20px;
-    }
+    .footer { text-align:center; padding:30px; background:#080808; color:#555; }
 
     .whatsapp-button {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 1000;
+      position:fixed; bottom:25px; right:25px; z-index:1000;
     }
     .whatsapp-button img {
-      width: 60px;
-      height: 60px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-      transition: transform 0.2s;
+      width:60px; height:60px;
+      transition:transform 0.2s;
     }
-    .whatsapp-button img:hover {
-      transform: scale(1.1);
-    }
+    .whatsapp-button img:hover { transform:scale(1.1); }
 
-    @media (max-width: 768px) {
-      .features, .plans { flex-direction: column; align-items: center; }
-      .hero-content h1 { font-size: 2.5rem; }
+    @media (max-width:768px) {
+      .carousel { justify-content:center; }
+      .hero-content h1 { font-size:2.2rem; }
     }
   </style>
 </head>
@@ -155,85 +86,61 @@
 
   <div class="hero">
     <div class="hero-content">
-      <h1>Seu Entretenimento Sem Limites</h1>
-      <p>Filmes, séries e esportes em um só lugar, com acesso rápido e seguro.</p>
-      <a href="#planos" class="btn-cta">Confira os planos</a>
+      <h1>TelaLivre 3D Experience</h1>
+      <p>Mais de 10.000 canais, filmes e séries em HD, FULL HD e 4K.</p>
+      <a href="#planos" class="btn">Conheça os Planos</a>
+      <a href="https://wa.me/5517935006483" class="btn">Fale via WhatsApp</a>
     </div>
   </div>
 
-  <section class="features">
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/100/ffffff/tv.png" alt="TV HD">
-      <h3>Streaming Full HD & Ultra HD</h3>
-      <p>Qualidade com alta resolução, sem travamentos.</p>
-    </div>
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/100/ffffff/lock.png" alt="Seguro">
-      <h3>Conexão Segura</h3>
-      <p>Ambiente criptografado e confiável.</p>
-    </div>
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/100/ffffff/device.png" alt="Multidispositivo">
-      <h3>Multi-dispositivos</h3>
-      <p>Assista no celular, tablet, TV ou computador.</p>
-    </div>
+  <section class="benefits">
+    <p>✅ Mais de <strong>10.000 canais</strong> nacionais e internacionais</p>
+    <p>✅ Filmes, séries, esportes e <strong>canais adultos</strong></p>
+    <p>✅ <strong>Atualizações automáticas</strong> sem custo</p>
+    <p>✅ Qualidade <strong>HD / FULL HD / 4K</strong></p>
   </section>
+
+  <div class="carousel">
+    <div class="card-3d"><img src="capa1.jpg" alt="Conteúdo 1"></div>
+    <div class="card-3d"><img src="capa2.jpg" alt="Conteúdo 2"></div>
+    <div class="card-3d"><img src="capa3.jpg" alt="Conteúdo 3"></div>
+    <div class="card-3d"><img src="capa4.jpg" alt="Conteúdo 4"></div>
+  </div>
 
   <section id="planos">
-    <h2 style="text-align:center; color:#fff; font-size:2rem; margin-bottom:20px;">📦 Nossos Planos</h2>
-    
-    <div style="max-width: 800px; margin: 0 auto 40px; color: #ccc; font-size: 1.1rem; line-height: 1.8;">
-      <p>✅ Mais de <strong>10.000 canais</strong> nacionais e internacionais</p>
-      <p>✅ Filmes, séries, esportes e <strong>canais adultos</strong></p>
-      <p>✅ <strong>Atualizações automáticas</strong> sem custo</p>
-      <p>✅ Qualidade <strong>HD / FULL HD / 4K</strong></p>
-    </div>
-
-    <p style="text-align:center; color:#ccc; font-size:1.1rem; margin-bottom:40px;">
-      Pagamentos via <strong>Pix</strong> ou <strong>Cartão de Crédito/Débito</strong>, com segurança total.
-    </p>
-
+    <h2 style="color:#00d084; font-size:2.2rem; margin-bottom:20px;">Escolha Seu Plano</h2>
     <div class="plans">
       <div class="plan-card">
-        <header><h2>1 Mês</h2></header>
-        <div class="content">
-          <p>R$35,00</p>
-          <p>Acesso completo por 30 dias</p>
-        </div>
-        <div class="action">
-          <a href="#checkout">Assinar</a>
-        </div>
+        <header><h3>1 Mês</h3></header>
+        <div class="info"><p>R$35,00</p><p>Acesso completo por 30 dias</p></div>
+        <div class="action"><a href="#checkout">Assinar</a></div>
       </div>
       <div class="plan-card">
-        <header><h2>3 Meses</h2></header>
-        <div class="content">
-          <p>R$90,00</p>
-          <p>Pacote com desconto especial</p>
-        </div>
-        <div class="action">
-          <a href="#checkout">Assinar</a>
-        </div>
+        <header><h3>3 Meses</h3></header>
+        <div class="info"><p>R$90,00</p><p>Pacote com desconto especial</p></div>
+        <div class="action"><a href="#checkout">Assinar</a></div>
       </div>
       <div class="plan-card">
-        <header><h2>6 Meses</h2></header>
-        <div class="content">
-          <p>R$160,00</p>
-          <p>Economia e benefícios a longo prazo</p>
-        </div>
-        <div class="action">
-          <a href="#checkout">Assinar</a>
-        </div>
+        <header><h3>6 Meses</h3></header>
+        <div class="info"><p>R$160,00</p><p>Economia e benefícios a longo prazo</p></div>
+        <div class="action"><a href="#checkout">Assinar</a></div>
       </div>
     </div>
   </section>
 
-  <div class="footer">
-    <p>&copy; 2025 TelaLivre. Todos os direitos reservados.</p>
-  </div>
+  <div class="footer">&copy; 2025 TelaLivre. Todos os direitos reservados.</div>
 
   <a href="https://wa.me/5517935006483" class="whatsapp-button" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
   </a>
 
+  <script>
+    // opcional: auto-scroll suave do carrossel
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('wheel', e => {
+      e.preventDefault();
+      carousel.scrollLeft += e.deltaY;
+    });
+  </script>
 </body>
 </html>
