@@ -1,123 +1,141 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CinePlay IPTV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlixTv - A Melhor Experiência em IPTV</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(145deg, #0d0d1d, #1c1c2e);
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #000000, #1a1a1a);
       color: #fff;
-      overflow-x: hidden;
     }
     header {
-      background: #111;
-      padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      padding: 50px 20px 20px;
+      background: url('https://images.unsplash.com/photo-1581090700227-4c2a7030b03a') no-repeat center center/cover;
     }
     header h1 {
-      font-size: 2.5em;
-      background: linear-gradient(90deg, #00ffd1, #007cf0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 3em;
+      color: #ff00ff;
+      text-shadow: 2px 2px 10px #000;
     }
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background: url('https://cdn.pixabay.com/photo/2023/10/22/iptv-bg-3d.jpg') no-repeat center/cover;
-      backdrop-filter: brightness(0.3);
-    }
-    .hero h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .hero p {
+    header p {
       font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto;
+      margin-top: 10px;
     }
-    .planos {
-      padding: 40px 20px;
-      background: #1b1b2f;
+    .button {
+      background-color: #a600ff;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: 0 0 20px #a600ff;
+      display: inline-block;
+      margin: 20px 0;
+    }
+    .section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: auto;
       text-align: center;
     }
-    .planos h3 {
-      font-size: 2em;
+    .section h2 {
+      color: #ff00ff;
       margin-bottom: 30px;
     }
-    .tabela {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
-      max-width: 800px;
-      margin: 0 auto;
     }
-    .tabela div {
-      background: #2d2d44;
+    .plan {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 20px;
+      width: 250px;
+      box-shadow: 0 0 20px #a600ff55;
+    }
+    .plan h3 {
+      color: #fff;
+      font-size: 1.8em;
+    }
+    .plan p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .feature {
+      background: #141414;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ff00ff33;
     }
-    .pagamento, .qualidade {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .qualidade p, .pagamento p {
-      font-size: 1.1em;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .whatsapp-button {
+    .whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #25D366;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 50px;
-      font-weight: bold;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-      text-decoration: none;
-      transition: transform 0.3s;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #25D366;
     }
-    .whatsapp-button:hover {
-      transform: scale(1.1);
+    .whatsapp img {
+      width: 32px;
+      height: 32px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>CinePlay IPTV</h1>
-  </header>
-
-  <section class="hero">
-    <h2>TV Online em Alta Performance</h2>
-    <p>Assista aos melhores canais, filmes e séries com qualidade e estabilidade garantidas. Tenha acesso completo e suporte 24h.</p>
-  </section>
-
-  <section class="planos">
-    <h3>Planos disponíveis</h3>
-    <div class="tabela">
-      <div><strong>1 Mês</strong><br>R$ 35,00</div>
-      <div><strong>3 Meses</strong><br>R$ 90,00</div>
-      <div><strong>6 Meses</strong><br>R$ 160,00</div>
-      <div><strong>1 Ano</strong><br>R$ 310,00</div>
+    <h1>FlixTv</h1>
+    <p>A melhor lista de canais, filmes e séries sem travamentos</p>
+    <a href="#planos" class="button">QUERO ACESSAR OS MELHORES CANAIS</a>
+  </header>  <section class="section" id="planos">
+    <h2>Planos Disponíveis</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>1 Mês</h3>
+        <p>R$ 35,00</p>
+      </div>
+      <div class="plan">
+        <h3>3 Meses</h3>
+        <p>R$ 90,00</p>
+      </div>
+      <div class="plan">
+        <h3>6 Meses</h3>
+        <p>R$ 160,00</p>
+      </div>
     </div>
-  </section>
-
-  <section class="pagamento">
-    <h3>Formas de Pagamento</h3>
-    <p>PIX, Cartão de Crédito e Débito. Segurança e praticidade no pagamento para sua comodidade.</p>
-  </section>
-
-  <section class="qualidade">
-    <h3>Qualidade Garantida</h3>
-    <p>Nossos clientes aprovam! Tenha total estabilidade, suporte eficiente e a melhor experiência IPTV do Brasil. Sua satisfação é garantida!</p>
-  </section>
-
-  <a href="https://wa.me/5517991996803" class="whatsapp-button">Fale no WhatsApp</a>
+  </section>  <section class="section">
+    <h2>Assista Onde Quiser</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>+100 Mil Conteúdos</h3>
+        <p>Filmes, séries e canais para todos os gostos.</p>
+      </div>
+      <div class="feature">
+        <h3>Canais Abertos e Fechados</h3>
+        <p>Com qualidade e sem travamentos.</p>
+      </div>
+      <div class="feature">
+        <h3>Suporte Técnico 24h</h3>
+        <p>Estamos prontos para te atender sempre.</p>
+      </div>
+      <div class="feature">
+        <h3>Pagamento Rápido</h3>
+        <p>Via PIX, cartão de crédito e débito.</p>
+      </div>
+    </div>
+  </section>  <a class="whatsapp" href="https://wa.me/5517991996803" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+  </a>
 </body>
 </html>
