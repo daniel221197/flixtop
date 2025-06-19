@@ -67,6 +67,20 @@
       font-weight: bold;
       color: #ffae00;
     }
+    .plano button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #ff3c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .plano button:hover {
+      background-color: #ff6600;
+    }
     .pagamento, .compatibilidade, .suporte {
       padding: 40px 20px;
       text-align: center;
@@ -76,6 +90,32 @@
     .pagamento h2, .compatibilidade h2, .suporte h2 {
       color: #ff3c00;
       font-size: 2em;
+    }
+    .compatibilidade-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+    }
+    .compatibilidade-icons div {
+      text-align: center;
+      max-width: 100px;
+    }
+    .compatibilidade-icons img {
+      width: 60px;
+      height: 60px;
+    }
+    .footer-banner {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .footer-banner img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
     }
     .whatsapp-btn {
       position: fixed;
@@ -92,6 +132,13 @@
       box-shadow: 0 0 10px #25d366;
       text-decoration: none;
       z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .whatsapp-btn img {
+      width: 20px;
+      height: 20px;
     }
   </style>
 </head>
@@ -105,30 +152,57 @@
     <div class="plano">
       <h3>1 Mês</h3>
       <p>R$ 35,00</p>
+      <button>Escolher Plano</button>
     </div>
     <div class="plano">
       <h3>3 Meses</h3>
       <p>R$ 90,00</p>
+      <button>Escolher Plano</button>
     </div>
     <div class="plano">
       <h3>6 Meses</h3>
       <p>R$ 160,00</p>
+      <button>Escolher Plano</button>
     </div>
     <div class="plano">
       <h3>1 Ano</h3>
       <p>R$ 300,00</p>
+      <button>Escolher Plano</button>
     </div>
   </section>  <section class="pagamento">
     <h2>Formas de Pagamento</h2>
     <p>PIX, Cartão de Crédito e Débito</p>
   </section>  <section class="compatibilidade">
     <h2>Compatível com:</h2>
-    <p>Smart TVs, TV Box/FireStick, Celulares, Computadores e Projetores</p>
+    <div class="compatibilidade-icons">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504841.png" alt="Smart TV">
+        <p>Smart TV</p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="TV Box">
+        <p>TV Box</p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Celular">
+        <p>Celular</p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="Computador">
+        <p>Computador</p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3602/3602123.png" alt="Projetor">
+        <p>Projetor</p>
+      </div>
+    </div>
   </section>  <section class="suporte">
     <h2>Suporte 24 Horas</h2>
     <p>Conte com atendimento rápido e especializado, sempre que precisar.</p>
-  </section>  <a href="https://wa.me/5517991996803" class="whatsapp-btn" target="_blank">
-    Fale conosco no WhatsApp
+  </section>  <div class="footer-banner">
+    <img src="/mnt/data/file-LYpgrotd4viZiLiP3Wj9rE" alt="Banner CinePlay" />
+  </div>  <a href="https://wa.me/5517991996803" class="whatsapp-btn" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> Fale conosco no WhatsApp
   </a>
 </body>
 </html>
